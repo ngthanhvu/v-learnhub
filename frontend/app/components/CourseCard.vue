@@ -1,6 +1,6 @@
 <template>
     <UCard
-        class="bg-gray-900 border border-gray-800 hover:border-purple-500 transition-all duration-300 group overflow-hidden">
+        class="bg-gray-900 border border-gray-800 hover:border-purple-500 transition-all duration-300 group overflow-hidden w-full">
         <template #header>
             <div class="relative">
                 <div

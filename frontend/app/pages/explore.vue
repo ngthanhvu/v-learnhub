@@ -2,13 +2,13 @@
     <div>
         <!-- Section Header -->
         <div class="flex items-center justify-between mb-8">
-            <h1 class="text-3xl font-bold text-white">Đề xuất</h1>
+            <h1 class="text-3xl font-bold text-white">Khoá học</h1>
             <UButton icon="i-heroicons-arrow-right" color="gray" variant="ghost" square />
         </div>
 
         <!-- Courses Grid -->
         <div class="grid gap-6 mb-12" :style="gridStyle">
-            <CourseCard v-for="course in featuredCourses" :key="course.id" :course="course" />
+            <CourseCard v-for="course in courses" :key="course.id" :course="course" />
         </div>
     </div>
 </template>
@@ -55,22 +55,22 @@ const gridStyle = computed(() => {
     return { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' }
 })
 
-const featuredCourses = [
+const courses = [
     {
         id: 1,
         title: 'Khóa học ReactJS Master - Nắm vững kiến thức React chuyên sâu',
         thumbnail: 'https://placehold.co/600x400.png',
-        rating: 4,
+        rating: 4.5,
         views: 20765,
         price: 699000,
         originalPrice: 999000,
-        badge: 'Khóa học miễn phí'
+        badge: null
     },
     {
         id: 2,
         title: 'Tự học thiết kế website hiệu quả với khóa học HTMLCSS cơ bản cho người mới',
         thumbnail: 'https://placehold.co/600x400.png',
-        rating: 4,
+        rating: 4.5,
         views: 62380,
         price: 0,
         originalPrice: null,
@@ -80,7 +80,7 @@ const featuredCourses = [
         id: 3,
         title: 'Khóa học HTMLCSS nâng cao cắt giao diện toàn tập với Gulp, Pug và Sass',
         thumbnail: 'https://placehold.co/600x400.png',
-        rating: 5,
+        rating: 4.5,
         views: 28624,
         price: 0,
         originalPrice: null,
@@ -90,11 +90,52 @@ const featuredCourses = [
         id: 4,
         title: 'Khóa học Javascript online từ Google Meet',
         thumbnail: 'https://placehold.co/600x400.png',
-        rating: 5,
+        rating: 4.5,
         views: 26204,
         price: 499000,
         originalPrice: 899000,
         badge: null
+    },
+    {
+        id: 5,
+        title: 'Khóa học React - Xây dựng ứng dụng web hiện đại',
+        thumbnail: 'https://placehold.co/600x400.png',
+        rating: 5,
+        views: 15234,
+        price: 799000,
+        originalPrice: 1199000,
+        badge: null
+    },
+    {
+        id: 6,
+        title: 'Javascript By Evondev - Từ cơ bản đến nâng cao',
+        thumbnail: 'https://placehold.co/600x400.png',
+        rating: 5,
+        views: 32156,
+        price: 599000,
+        originalPrice: 999000,
+        badge: null
+    },
+    {
+        id: 7,
+        title: 'HTML CSS Rocket - Phát triển website nhanh chóng',
+        thumbnail: 'https://placehold.co/600x400.png',
+        rating: 4.5,
+        views: 18923,
+        price: 0,
+        originalPrice: null,
+        badge: 'Khóa học miễn phí'
+    },
+    {
+        id: 8,
+        title: 'Minh họa vector bằng Adobe Illustrator',
+        thumbnail: 'https://placehold.co/600x400.png',
+        rating: 4.5,
+        views: 12456,
+        price: 899000,
+        originalPrice: 1299000,
+        badge: null
     }
 ]
 </script>
+
