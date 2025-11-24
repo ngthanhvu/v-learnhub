@@ -1,39 +1,39 @@
 <template>
-    <UCard
-        class="bg-gray-900 border border-gray-800 hover:border-purple-500 transition-all duration-300 group overflow-hidden w-full">
-        <template #header>
+    <div
+        class="bg-gray-900 border border-gray-700 transition-all duration-300 group overflow-hidden w-full rounded-2xl">
+        <div class="p-4 border-gray-700">
             <div class="relative">
                 <div
-                    class="aspect-video bg-linear-to-br from-purple-600 to-blue-600 rounded-lg overflow-hidden relative">
+                    class="aspect-video bg-linear-to-br from-purple-600 to-blue-600 rounded-xl overflow-hidden relative">
                     <img v-if="course.thumbnail" :src="course.thumbnail" :alt="course.title"
                         class="w-full h-full object-cover" />
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <UIcon name="i-heroicons-academic-cap" class="w-16 h-16 text-white/30" />
+                        <AcademicCapIcon class="w-16 h-16 text-white/30" />
                     </div>
                 </div>
 
                 <div v-if="course.badge" class="absolute top-3 right-3">
-                    <UBadge color="primary" variant="solid" size="md" class="px-3 py-1 text-white">
+                    <span class="inline-flex items-center gap-1 rounded-full bg-purple-600/80 px-3 py-1 text-white text-xs font-semibold">
                         {{ course.badge }}
-                    </UBadge>
+                    </span>
                 </div>
             </div>
-        </template>
+        </div>
 
-        <div class="space-y-4">
+        <div class="space-y-4 p-6">
             <div class="flex gap-1 mb-3 justify-end h-4">
-                <UIcon v-for="star in 5" :key="star" name="i-heroicons-star-solid"
+                <StarIcon v-for="star in 5" :key="star"
                     :class="star <= course.rating ? 'text-yellow-400' : 'text-gray-700'" class="w-5 h-5" />
             </div>
 
             <h3
-                class="text-white font-semibold text-lg line-clamp-2 min-h-14 group-hover:text-purple-400 transition-colors">
+                class="text-white font-semibold text-lg line-clamp-2 min-h-14 group-hover:text-purple-400 transition-colors cursor-pointer">
                 {{ course.title }}
             </h3>
 
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2 text-gray-400">
-                    <UIcon name="i-heroicons-eye" class="w-4 h-4" />
+                    <EyeIcon class="w-4 h-4" />
                     <span>{{ formatViews(course.views) }}</span>
                 </div>
                 <div class="flex items-center text-sm gap-2">
@@ -47,15 +47,16 @@
             </div>
 
             <button
-                class="rounded-xl h-12 inline-flex items-center justify-center text-center px-5 font-bold min-w-[120px] transition-all text-sm shrink-0 w-full from-primary to-secondary bg-linear-to-r text-white hover:brightness-110"
+                class="rounded-xl h-12 inline-flex items-center justify-center text-center px-5 font-bold min-w-[120px] transition-all text-sm shrink-0 w-full bg-gradient-to-r from-green-400 to-blue-500 text-white hover:brightness-110 cursor-pointer"
                 @click="handleViewDetails">
                 Xem chi tiết
             </button>
         </div>
-    </UCard>
+    </div>
 </template>
 
 <script setup lang="ts">
+import { AcademicCapIcon, StarIcon, EyeIcon } from '@heroicons/vue/24/solid'
 interface Course {
     id: number
     title: string

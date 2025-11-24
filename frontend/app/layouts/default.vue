@@ -4,13 +4,17 @@
         <Sidebar />
 
         <!-- Header - Full width với padding để tránh sidebar -->
-        <header class="sticky top-0 z-10 bg-gray-900/80 backdrop-blur-lg border-b border-gray-800 md:pl-64 xl:pr-96">
+        <header class="sticky top-0 z-10 bg-gray-900/60 backdrop-blur-lg border-b border-gray-800 md:pl-64 pr-8">
             <div class="flex items-center justify-end gap-4 px-8 py-4">
-                <UButton icon="i-heroicons-moon" color="gray" variant="ghost" square />
-                <UButton color="primary" size="md">
-                    <UIcon name="i-heroicons-user" class="w-5 h-5" />
+                <button
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 transition-colors">
+                    <MoonIcon class="w-5 h-5" />
+                </button>
+                <button
+                    class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-green-400 to-blue-500 px-5 py-2 font-semibold text-gray-900 shadow-lg">
+                    <UserIcon class="w-5 h-5" />
                     Đăng nhập
-                </UButton>
+                </button>
             </div>
         </header>
 
@@ -30,16 +34,20 @@
                             <span class="text-2xl">🔥</span>
                             <h2 class="text-xl font-bold text-white">Leaderboard</h2>
                         </div>
-                        <UButton icon="i-heroicons-arrow-right" color="gray" variant="ghost" square size="xs" />
+                        <button
+                            class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 transition-colors">
+                            <ArrowRightIcon class="w-4 h-4" />
+                        </button>
                     </div>
 
                     <div class="space-y-4">
                         <div v-for="user in leaderboard" :key="user.rank" class="flex items-center gap-3">
                             <span class="text-gray-400 font-semibold w-6">{{ user.rank }}</span>
-                            <UAvatar :src="user.avatar" :alt="user.name" size="sm" :ui="{ rounded: 'rounded-full' }" />
+                            <img :src="user.avatar" :alt="user.name"
+                                class="w-10 h-10 rounded-full object-cover border border-gray-800" />
                             <span class="text-white flex-1">{{ user.name }}</span>
                             <div class="flex items-center gap-1">
-                                <UIcon :name="user.icon" class="w-4 h-4" :class="user.iconColor" />
+                                <component :is="user.icon" class="w-4 h-4" :class="user.iconColor" />
                                 <span class="text-white font-semibold">{{ user.points }}</span>
                             </div>
                         </div>
@@ -52,49 +60,47 @@
 
 <script setup lang="ts">
 import Sidebar from '~/components/layouts/Sidebar.vue'
-
-const searchQuery = ref('')
-const freeCoursesOnly = ref(false)
+import { MoonIcon, UserIcon, ArrowRightIcon, FireIcon, BoltIcon, SparklesIcon, CpuChipIcon, RocketLaunchIcon } from '@heroicons/vue/24/solid'
 
 const leaderboard = [
     {
         rank: 1,
         name: 'likha',
-        avatar: '/avatars/user1.jpg',
+        avatar: 'https://placehold.co/50',
         points: '5.9k',
-        icon: 'i-heroicons-fire',
+        icon: FireIcon,
         iconColor: 'text-purple-500'
     },
     {
         rank: 2,
         name: 'cuong1811',
-        avatar: '/avatars/user2.jpg',
+        avatar: 'https://placehold.co/50',
         points: '5.2k',
-        icon: 'i-heroicons-bolt',
+        icon: BoltIcon,
         iconColor: 'text-orange-500'
     },
     {
         rank: 3,
         name: 'dongpl',
-        avatar: '/avatars/user3.jpg',
+        avatar: 'https://placehold.co/50',
         points: '4.8k',
-        icon: 'i-heroicons-sparkles',
+        icon: SparklesIcon,
         iconColor: 'text-purple-500'
     },
     {
         rank: 4,
         name: 'codehaier',
-        avatar: '/avatars/user4.jpg',
+        avatar: 'https://placehold.co/50',
         points: '4.0k',
-        icon: 'i-heroicons-cpu-chip',
+        icon: CpuChipIcon,
         iconColor: 'text-blue-500'
     },
     {
         rank: 5,
         name: 'milo277',
-        avatar: '/avatars/user5.jpg',
+        avatar: 'https://placehold.co/50',
         points: '4.0k',
-        icon: 'i-heroicons-rocket-launch',
+        icon: RocketLaunchIcon,
         iconColor: 'text-blue-500'
     }
 ]

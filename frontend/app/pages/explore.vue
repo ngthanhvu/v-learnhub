@@ -1,9 +1,12 @@
 <template>
-    <div>
+    <div class="bg-gray-900 px-4 py-3  rounded-2xl">
         <!-- Section Header -->
         <div class="flex items-center justify-between mb-8">
-            <h1 class="text-3xl font-bold text-white">Khoá học</h1>
-            <UButton icon="i-heroicons-arrow-right" color="gray" variant="ghost" square />
+            <h1 class="font-bold text-white lg:text-lg">Khoá học</h1>
+            <button
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 transition-colors">
+                <ArrowRightIcon class="w-5 h-5" />
+            </button>
         </div>
 
         <!-- Courses Grid -->
@@ -14,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import { ArrowRightIcon } from '@heroicons/vue/24/outline'
+
 const windowWidth = ref(0)
 
 onMounted(() => {

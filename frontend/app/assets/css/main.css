@@ -1,25 +1,10 @@
 @import "tailwindcss";
-@import "@nuxt/ui";
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    @apply bg-gray-900;
-}
-
-::-webkit-scrollbar-thumb {
-    @apply bg-gray-700 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-600;
-}
-
-/* Smooth transitions */
 * {
-    @apply transition-colors duration-200;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+body {
+    background-color: #1A1B1E;
+
 }
