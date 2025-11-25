@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-900 px-4 py-3 rounded-2xl">
+    <div class="bg-gray-900 border border-gray-800 px-4 py-3 rounded-2xl">
         <!-- Section Header -->
         <div class="flex items-center justify-between mb-8">
             <h1 class="font-bold text-white lg:text-lg">Đề xuất</h1>

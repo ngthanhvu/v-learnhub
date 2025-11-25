@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-950">
+    <div class="min-h-screen">
         <!-- Sidebar trái - Fixed -->
         <Sidebar />
 
@@ -32,41 +32,44 @@
         </div>
 
         <!-- Sidebar phải - Fixed -->
-        <aside class="hidden xl:block fixed right-6 top-6 h-[calc(100vh-3rem)] w-96 overflow-y-auto z-40">
-            <div class="p-3 pt-[73px]">
-                <div class="bg-gray-900 rounded-2xl border border-gray-800 p-6">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="flex items-center gap-2">
-                            <span class="text-2xl">🔥</span>
-                            <h2 class="text-xl font-bold text-white">Leaderboard</h2>
-                        </div>
-                        <button
-                            class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 transition-colors">
-                            <ArrowRightIcon class="w-4 h-4" />
-                        </button>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div v-for="user in leaderboard" :key="user.rank" class="flex items-center gap-3">
-                            <span class="text-gray-400 font-semibold w-6">{{ user.rank }}</span>
-                            <img :src="user.avatar" :alt="user.name"
-                                class="w-10 h-10 rounded-full object-cover border border-gray-800" />
-                            <span class="text-white flex-1">{{ user.name }}</span>
-                            <div class="flex items-center gap-1">
-                                <component :is="user.icon" class="w-4 h-4" :class="user.iconColor" />
-                                <span class="text-white font-semibold">{{ user.points }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        <LeaderboardSidebar v-if="!isCourseDetailPage" :leaderboard="leaderboard" :visible="true" />
+        <PurchaseCard 
+            v-if="isCourseDetailPage && courseInfo"
+            :price="courseInfo.price"
+            :original-price="courseInfo.originalPrice"
+            :discount="courseInfo.discount"
+            :benefits="courseInfo.benefits"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import Sidebar from '~/components/layouts/Sidebar.vue'
+import LeaderboardSidebar from '~/components/LeaderboardSidebar.vue'
+import PurchaseCard from '~/components/PurchaseCard.vue'
 import { MoonIcon, UserIcon, ArrowRightIcon, FireIcon, BoltIcon, SparklesIcon, CpuChipIcon, RocketLaunchIcon } from '@heroicons/vue/24/solid'
+
+const route = useRoute()
+
+// Check if current page is course detail page
+const isCourseDetailPage = computed(() => {
+    return route.path.startsWith('/courses/') && route.params.id
+})
+
+// Get course data from shared state
+const courseState = useState('currentCourse', () => null)
+
+// Extract only needed fields from course data
+const courseInfo = computed(() => {
+    if (!courseState.value) return null
+    const course = courseState.value
+    return {
+        price: course.price,
+        originalPrice: course.originalPrice,
+        discount: course.discount,
+        benefits: course.benefits
+    }
+})
 
 const leaderboard = [
     {
