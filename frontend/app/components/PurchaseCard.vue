@@ -1,14 +1,16 @@
 <template>
     <aside class="hidden xl:block fixed right-6 top-6 h-[calc(100vh-3rem)] w-96 overflow-y-auto z-40">
         <div class="p-3 pt-[73px]">
-            <div class="bg-gray-900/80 border border-gray-800 rounded-3xl p-8 space-y-6 h-fit shadow-2xl shadow-black/20">
+            <div
+                class="bg-gray-900/80 border border-gray-800 rounded-3xl p-8 space-y-6 h-fit shadow-2xl shadow-black/20">
                 <div>
                     <div class="text-3xl font-bold text-white">
                         {{ formatPrice(price) }}
                     </div>
                     <div class="flex items-center gap-2 text-sm mt-1">
                         <span class="text-gray-500 line-through">{{ formatPrice(originalPrice) }}</span>
-                        <span class="inline-flex items-center rounded-full bg-purple-500/20 text-purple-300 px-3 py-1 font-semibold">
+                        <span
+                            class="inline-flex items-center rounded-full bg-purple-500/20 text-purple-300 px-3 py-1 font-semibold">
                             -{{ discount }}%
                         </span>
                     </div>
@@ -32,7 +34,7 @@
                         </button>
                     </div>
                     <button
-                        class="w-full rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 py-3 font-semibold text-gray-900 hover:brightness-110 cursor-pointer">
+                        class="w-full rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 py-3 font-semibold text-white hover:brightness-110 cursor-pointer">
                         Mua ngay
                     </button>
                 </div>
@@ -60,4 +62,3 @@ const formatPrice = (value: number) =>
         maximumFractionDigits: 0
     }).format(value)
 </script>
-

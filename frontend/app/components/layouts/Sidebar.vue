@@ -1,6 +1,6 @@
 <template>
     <aside
-        class="hidden md:block ml-5 border boder-gray-700 rounded-2xl fixed left-0 top-5 bottom-5 w-64 bg-gray-900 border-r border-gray-800 z-1000">
+        class="hidden md:block ml-5 border boder-gray-700 rounded-2xl fixed left-0 top-4 bottom-5 w-64 bg-gray-900 border-r border-gray-800 z-1000">
         <div class="flex flex-col h-full rounded-2xl">
             <div class="p-6">
                 <div class="flex items-center gap-3">
@@ -53,13 +53,12 @@
 </template>
 
 <script setup lang="ts">
-import { HomeIcon, AcademicCapIcon, BookOpenIcon, GiftIcon, UserCircleIcon, SparklesIcon, ArrowRightIcon } from '@heroicons/vue/24/outline'
+import { HomeIcon, AcademicCapIcon, BookOpenIcon, GiftIcon, SparklesIcon, ArrowRightIcon } from '@heroicons/vue/24/outline'
 
 const navItems = [
     { label: 'Dashboard', to: '/', icon: HomeIcon },
     { label: 'Khóa học', to: '/explore', icon: AcademicCapIcon },
-    { label: 'Khu vực học tập', to: '/study-area', icon: BookOpenIcon },
+    { label: 'Khu vực học tập', to: '/study', icon: BookOpenIcon },
     { label: 'Săn mã giảm giá', to: '/discounts', icon: GiftIcon, badge: 'Hot' },
-    { label: 'Profile', to: '/profile', icon: UserCircleIcon }
 ]
 </script>

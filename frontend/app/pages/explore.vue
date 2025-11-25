@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-900 px-4 py-3  rounded-2xl">
+    <div class="bg-gray-900 px-4 py-3 rounded-2xl">
         <!-- Section Header -->
         <div class="flex items-center justify-between mb-8">
             <h1 class="font-bold text-white lg:text-lg">Khoá học</h1>
@@ -9,7 +9,6 @@
             </button>
         </div>
 
-        <!-- Courses Grid -->
         <div class="grid gap-6 mb-12" :style="gridStyle">
             <CourseCard v-for="course in courses" :key="course.id" :course="course" />
         </div>
@@ -52,12 +51,12 @@ const contentWidth = computed(() => {
 const gridStyle = computed(() => {
     const width = contentWidth.value
     if (width >= 1050) {
-        return { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }
+        return { gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' }
     }
     if (width >= 680) {
-        return { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }
+        return { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }
     }
-    return { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' }
+    return { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }
 })
 
 const courses = [
@@ -143,4 +142,3 @@ const courses = [
     }
 ]
 </script>
-

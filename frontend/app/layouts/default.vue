@@ -1,27 +1,19 @@
 <template>
     <div class="min-h-screen">
-        <!-- Sidebar trái - Fixed -->
         <Sidebar />
+        <Header :MoonIcon="MoonIcon" :UserIcon="UserIcon" />
 
-        <!-- Header - Full width với padding để tránh sidebar -->
-        <Header />
-
-        <!-- Main Content -->
-        <div class="md:ml-64 xl:mr-96 min-w-0 transition-all">
-            <main class="px-8">
+        <div class="md:ml-64 min-w-0 transition-all" :class="{ 'xl:mr-96': !isExplorePage }">
+            <main class="px-8 mb-5">
                 <slot />
             </main>
         </div>
 
-        <!-- Sidebar phải - Fixed -->
-        <LeaderboardSidebar v-if="!isCourseDetailPage" :leaderboard="leaderboard" :visible="true" />
-        <PurchaseCard 
-            v-if="isCourseDetailPage && courseInfo"
-            :price="courseInfo.price"
-            :original-price="courseInfo.originalPrice"
-            :discount="courseInfo.discount"
-            :benefits="courseInfo.benefits"
-        />
+        <LeaderboardSidebar v-if="!isCourseDetailPage && !isExplorePage" :close-icon="ArrowRightIcon"
+            :leaderboard="leaderboard" :visible="true" />
+        <PurchaseCard v-if="isCourseDetailPage && courseInfo" :price="courseInfo.price"
+            :original-price="courseInfo.originalPrice" :discount="courseInfo.discount"
+            :benefits="courseInfo.benefits" />
     </div>
 </template>
 
@@ -34,15 +26,16 @@ import Header from '~/components/layouts/Header.vue'
 
 const route = useRoute()
 
-// Check if current page is course detail page
 const isCourseDetailPage = computed(() => {
     return route.path.startsWith('/courses/') && route.params.id
 })
 
-// Get course data from shared state
+const isExplorePage = computed(() => {
+    return route.path === '/explore' || route.path === '/study' || route.path === '/discounts'
+})
+
 const courseState = useState('currentCourse', () => null)
 
-// Extract only needed fields from course data
 const courseInfo = computed(() => {
     if (!courseState.value) return null
     const course = courseState.value
