@@ -11,11 +11,11 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      title: 'EvonHub - Nền tảng học trực tuyến',
+      title: 'VonHub - Nền tảng học trực tuyến',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'EvonHub - Nền tảng học lập trình trực tuyến' }
+        { name: 'description', content: 'VonHub - Nền tảng học lập trình trực tuyến' }
       ]
     }
   }
