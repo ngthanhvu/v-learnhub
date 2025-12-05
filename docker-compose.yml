@@ -22,7 +22,7 @@ services:
       dockerfile: Dockerfile
     container_name: frontend-learn
     ports:
-      - "3000:3000"
+      - "4000:4000"
     environment:
       NUXT_PUBLIC_API_URL: "http://localhost:5001" # Nuxt gọi backend
     volumes:
